@@ -40,6 +40,8 @@ def index(request):
     attributes = False
     paint_logout = False
 
+    print("---------------------------onelogin@index")
+
     if 'sso' in req['get_data']:
         return HttpResponseRedirect(auth.login())
         # If AuthNRequest ID need to be stored in order to later validate it, do instead
@@ -69,6 +71,7 @@ def index(request):
         # request.session['LogoutRequestID'] = auth.get_last_request_id()
         #return HttpResponseRedirect(slo_built_url)
     elif 'acs' in req['get_data']:
+        print("---------------------------onelogin@index-acs")
         request_id = None
         if 'AuthNRequestID' in request.session:
             request_id = request.session['AuthNRequestID']
